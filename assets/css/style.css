@@ -1,3 +1,13 @@
 * {
     font-family: sans-serif;
 }
+
+.forecast {
+    color: white;
+    padding: 5px;
+    border: dotted 2px yellow;
+    width: fit-content;
+    background-color: navy;
+    
+
+}
