@@ -4,7 +4,11 @@ submitBtn.addEventListener('click', getCity);
 
 function getCity(event) {
     event.preventDefault();
+
+    // Clears results and forecast section with each search
     $('#results').text('');
+    $('#forecast').text('');
+
     // Gets the value of what's in the searchInput; sets it's name to city 
     let city = document.getElementById('searchInput').value;
 
@@ -20,6 +24,7 @@ function getCity(event) {
     // Grabs city from local storage and sets the text of the button to the city
     localStorage.getItem(city);
     previousCityBtn.textContent = city;
+    previousCityBtn.setAttribute('class', 'previousCityBtn');
 
     // Adds classes/style to button
     previousCityBtn.classList.add('col-12');
@@ -28,22 +33,39 @@ function getCity(event) {
     // Appends the button to the page
     CitiesEl.appendChild(previousCityBtn);
 
+    // Run latLon function passing the value of the search input
     getLatLon($('#searchInput').val());
 }
 
+
+
+$(document).on('click', '.previousCityBtn', function searchAgain(e){
+    $('#results').text('');
+    $('#forecast').text('');
+    var previousCityName = e.currentTarget.innerText
+    getLatLon(previousCityName);
+})
+
+
+
+
+
 function getLatLon(e){
+
+    // set lat and lon as variables
     let lat;
     let lon;
-    console.log(e)
+
+    // API to retrieve lat and lon of a city
     let geoAPIurl= `http://api.openweathermap.org/geo/1.0/direct?q=${e}&limit=1&appid=46aa886cbc817eec006f6d044987e3b0`
 
+    // Calls to API
     fetch(geoAPIurl)
     .then(function(response){
     return response.json();
+
+    // retrieves lat and lon from the data
     }).then(function(data){
-        console.log(data);
-        console.log("lat",data[0].lat);
-        console.log("lon",data[0].lon);
         lat = data[0].lat;
         lon = data[0].lon;
 
@@ -57,12 +79,14 @@ function getLatLon(e){
     // Appends the city title to the page
     resultsEl.appendChild(resultsTitle);
     
+    // Calls currentForecast function
     currentForecast(lat, lon);
     })
 };
 
+// Pulls current forecast from API
+function currentForecast(Lat, Lon) {
 
-function currentForecast(Lat, Lon) {   
     let weatherAPIUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${Lat}&lon=${Lon}&appid=46aa886cbc817eec006f6d044987e3b0`
     fetch(weatherAPIUrl)
     .then(function(response){
@@ -102,8 +126,10 @@ function currentForecast(Lat, Lon) {
     p5.textContent = 'UV Index: ' + uvIndex
     
     $('#results').append(icon);
-
+    
     $('#results').append(currentEl);
+    $('#results').attr('class', 'border');
+    
 
     if (uvIndex <= 5) {
         p5.setAttribute('style', 'background-color: green')
@@ -114,34 +140,17 @@ function currentForecast(Lat, Lon) {
     }
 
 
-   let futureForecast = [ data.daily[0], data.daily[1], data.daily[2], data.daily[3], data.daily[4],];
+   let futureForecast = [ data.daily[1], data.daily[2], data.daily[3], data.daily[4], data.daily[5],];
 
    futureForecast.forEach(element =>{ 
     let nextDate = new Date(element.dt*1000);
-    let nextDateText = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`;
-
-    console.log(nextDateText);
-
-    // let nextIconCode = element.weather[0].icon;
-    // let nextIcon = $("<img>")
-    // icon.attr("src",`http://openweathermap.org/img/wn/${nextIconCode}@2x.png`)
-
-    // console.log(nextIconCode);
-
+    let nextDateText = `${nextDate.getMonth()}/${nextDate.getDate()}/${nextDate.getFullYear()}`;
+    let nextIconCode = element.weather[0].icon;
     let nextKelvinTemp = element.temp.max;
     let nextCelsiusTemp = nextKelvinTemp - 273;
     let nextFahrenTemp = Math.floor(nextCelsiusTemp * (9/5) + 32);
-
-    console.log(nextFahrenTemp);
-
     let nextWindSpeed = element.wind_speed;
-
-    console.log(nextWindSpeed);
-
-    let nextHumidity = element.humidity
-
-    console.log(nextHumidity);
-
+    let nextHumidity = element.humidity;
 
     var futureEl = document.createElement('div');
 
@@ -149,8 +158,10 @@ function currentForecast(Lat, Lon) {
     futureEl.appendChild(p1next);
     p1next.textContent = nextDateText;
 
-    // futureEl.appendChild(nextIcon);
-
+    var nextIconEl = document.createElement('img')
+    futureEl.appendChild(nextIconEl)
+    nextIconEl.setAttribute("src",`http://openweathermap.org/img/wn/${nextIconCode}@2x.png`)
+   
     var p2next = document.createElement('p');
     futureEl.appendChild(p2next);
     p2next.textContent = 'Temp: ' + nextFahrenTemp + '°F';
@@ -164,7 +175,7 @@ function currentForecast(Lat, Lon) {
     p4next.textContent = 'Humidity: ' + nextHumidity + '%';
 
     let fiveDayForecast = document.getElementById('forecast');
-    
+
     fiveDayForecast.appendChild(futureEl);
 
     futureEl.setAttribute('class', 'forecast');

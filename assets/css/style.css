@@ -5,9 +5,9 @@
 .forecast {
     color: white;
     padding: 5px;
-    border: dotted 2px yellow;
+    border: dotted 2px aqua;
     width: fit-content;
     background-color: navy;
-    
+    font-size: 15px;
 
 }
