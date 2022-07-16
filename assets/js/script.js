@@ -57,7 +57,7 @@ function getLatLon(e){
     let lon;
 
     // API to retrieve lat and lon of a city
-    let geoAPIurl= `http://api.openweathermap.org/geo/1.0/direct?q=${e}&limit=1&appid=46aa886cbc817eec006f6d044987e3b0`
+    let geoAPIurl= `https://api.openweathermap.org/geo/1.0/direct?q=${e}&limit=1&appid=46aa886cbc817eec006f6d044987e3b0`
 
     // Calls to API
     fetch(geoAPIurl)
