@@ -37,18 +37,13 @@ function getCity(event) {
     getLatLon($('#searchInput').val());
 }
 
-
-
+// Retrieves appended buttons city name and runs the getLatLon function with this name
 $(document).on('click', '.previousCityBtn', function searchAgain(e){
     $('#results').text('');
     $('#forecast').text('');
     var previousCityName = e.currentTarget.innerText
     getLatLon(previousCityName);
 })
-
-
-
-
 
 function getLatLon(e){
 
@@ -93,21 +88,28 @@ function currentForecast(Lat, Lon) {
     return response.json();
     }).then(function(data){
     console.log(data);
-
+    
+    // Retrieving data from api results and setting to variables
+    // Current Weather Date
     let date = new Date(data.current.dt*1000)
     let dateText = `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
-
+    
+    // Current Weather Icon
     let iconcode = data.current.weather[0].icon;
     let icon = $('<img>')
     icon.attr("src",`http://openweathermap.org/img/wn/${iconcode}@2x.png`);
     
+    // Current Weather Temperature
     let kelvinTemp = data.current.temp;
     let celsiusTemp = kelvinTemp - 273;
     let fahrenTemp = Math.floor(celsiusTemp * (9/5) + 32);
+
+    // Current Weather Conditions
     let humidity = data.current.humidity;
     let windSpeed = data.current.wind_speed;
     let uvIndex = data.current.uvi;
     
+    // Creating elements, setting their content to Current Weather Conditions pulled from API, appending to page
     var currentEl = document.createElement('div');
     var p1 = document.createElement('p');
     currentEl.appendChild(p1);
@@ -126,11 +128,10 @@ function currentForecast(Lat, Lon) {
     p5.textContent = 'UV Index: ' + uvIndex
     
     $('#results').append(icon);
-    
     $('#results').append(currentEl);
     $('#results').attr('class', 'border');
     
-
+    // Changes bacgkround color of UV Index to indicate favorable, moderate and severe conditions
     if (uvIndex <= 5) {
         p5.setAttribute('style', 'background-color: green')
     } else if (uvIndex >= 8) {
@@ -139,47 +140,50 @@ function currentForecast(Lat, Lon) {
         p5.setAttribute('style', 'background-color: yellow')
     }
 
+    // Array for 5 Day Forecast 
+    let futureForecast = [ data.daily[1], data.daily[2], data.daily[3], data.daily[4], data.daily[5],];
 
-   let futureForecast = [ data.daily[1], data.daily[2], data.daily[3], data.daily[4], data.daily[5],];
+    // Cycles through each index of array and performs commands
+    futureForecast.forEach(element =>{ 
 
-   futureForecast.forEach(element =>{ 
-    let nextDate = new Date(element.dt*1000);
-    let nextDateText = `${nextDate.getMonth()}/${nextDate.getDate()}/${nextDate.getFullYear()}`;
-    let nextIconCode = element.weather[0].icon;
-    let nextKelvinTemp = element.temp.max;
-    let nextCelsiusTemp = nextKelvinTemp - 273;
-    let nextFahrenTemp = Math.floor(nextCelsiusTemp * (9/5) + 32);
-    let nextWindSpeed = element.wind_speed;
-    let nextHumidity = element.humidity;
+        // 5 Day Forecast Date
+        let nextDate = new Date(element.dt*1000);
+        let nextDateText = `${nextDate.getMonth()}/${nextDate.getDate()}/${nextDate.getFullYear()}`;
 
-    var futureEl = document.createElement('div');
+        // 5 Day Forecast Icons
+        let nextIconCode = element.weather[0].icon;
 
-    var p1next = document.createElement('p');
-    futureEl.appendChild(p1next);
-    p1next.textContent = nextDateText;
+        // 5 Day Forecast Temp
+        let nextKelvinTemp = element.temp.max;
+        let nextCelsiusTemp = nextKelvinTemp - 273;
+        let nextFahrenTemp = Math.floor(nextCelsiusTemp * (9/5) + 32);
 
-    var nextIconEl = document.createElement('img')
-    futureEl.appendChild(nextIconEl)
-    nextIconEl.setAttribute("src",`http://openweathermap.org/img/wn/${nextIconCode}@2x.png`)
-   
-    var p2next = document.createElement('p');
-    futureEl.appendChild(p2next);
-    p2next.textContent = 'Temp: ' + nextFahrenTemp + '°F';
+        // 5 Day Forecast Conditions
+        let nextWindSpeed = element.wind_speed;
+        let nextHumidity = element.humidity;
 
-    var p3next = document.createElement('p');
-    futureEl.appendChild(p3next);
-    p3next.textContent = 'Wind Speed: ' + nextWindSpeed + 'mph';
+        // Creating elements, setting their content, appending to page for each index
+        var futureEl = document.createElement('div');
+        var p1next = document.createElement('p');
+        futureEl.appendChild(p1next);
+        p1next.textContent = nextDateText;
+        var nextIconEl = document.createElement('img')
+        futureEl.appendChild(nextIconEl)
+        nextIconEl.setAttribute("src",`http://openweathermap.org/img/wn/${nextIconCode}@2x.png`)
+        var p2next = document.createElement('p');
+        futureEl.appendChild(p2next);
+        p2next.textContent = 'Temp: ' + nextFahrenTemp + '°F';
+        var p3next = document.createElement('p');
+        futureEl.appendChild(p3next);
+        p3next.textContent = 'Wind Speed: ' + nextWindSpeed + 'mph';
+        var p4next = document.createElement('p');
+        futureEl.appendChild(p4next);
+        p4next.textContent = 'Humidity: ' + nextHumidity + '%';
 
-    var p4next = document.createElement('p');
-    futureEl.appendChild(p4next);
-    p4next.textContent = 'Humidity: ' + nextHumidity + '%';
-
-    let fiveDayForecast = document.getElementById('forecast');
-
-    fiveDayForecast.appendChild(futureEl);
-
-    futureEl.setAttribute('class', 'forecast');
-   })
+        let fiveDayForecast = document.getElementById('forecast');
+        fiveDayForecast.appendChild(futureEl);
+        futureEl.setAttribute('class', 'forecast');
+    })
 })
 }
 

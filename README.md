@@ -12,9 +12,9 @@ Follow link to view my Module 6 - Challenge - Weather Dashboard:
 
 <br>
 
-# View Site Screenshot
+#  Website Screenshot
 
-![Work Day Scheduler](./assets/images/Screenshot%202022-07-05%2023-33-16.png)
+![Weather Dashboard](./assets/images/WeatherDashboard.png)
 
 <br>
 
@@ -24,13 +24,15 @@ Follow link to view my Module 6 - Challenge - Weather Dashboard:
 
 Special thanks to...
 <br>
-* [Alex Sexton](https://github.com/SlexAxton)
+* [Jaden Rodriguez](https://github.com/Jadentr44)
 
 <br>
 
 # Resources
-* MDN:
-    * https://developer.mozilla.org/en-US/
+* Open Weather One Call API:
+    * https://openweathermap.org/api/one-call-api
+* Bootstrap
+* jQuery    
 
 <br>
 
