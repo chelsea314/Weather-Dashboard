@@ -1,60 +1,49 @@
-# Challenge-6---Server-Side-APIs-Weather-Dashboard
+# **Weather Dashboard**
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Overview
-The purpose of this project is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. Travelers can see the weather outlook for multiple cities so that they can plan trips accordingly. 
+## Deployed Link
+Click [here.](https://chelsea314.github.io/Challenge-6---Server-Side-APIs-Weather-Dashboard/)
+## Description
+The purpose of this applicaiton is to give travelers the weather forecast for cities of their choosing so that they can plan trips accordingly. Their searches are saved and accessible to review again.
 
+## Table of Contents
+ - [How it Works](#how-it-works)
+ - [Resources](#resources)
+ - [Contributing](#contributing)
+ - [Quesitons](#questions)
+
+##  How it Works:
+When the user first arrives to the Weather Dashboard, they will be presented with a form to search for a city. 
+![Search City](./assets/images/search-city.png)
+
+Users will be able to view the current day's weather as well as the five day forecast for the city in which they searched. 
+![View Weather](./assets/images/view-weather.png)
+
+The color surrounding the UV Index for the current day's weather will change color based on the severity. 
+
+Green indicates a low risk of harm from unprotected sun exposure, yellow indicates a moderate risk and red indicates a high risk. 
+![UV Index](./assets/images/uv-index.png)
+
+Users can also keep track of their previous searches and access them again by clicking the corresponding button.
+![Previous Searches](./assets/images/previous-searches.png)
 <br>
 
-# Deployed Website
-Follow link to view my Module 6 - Challenge - Weather Dashboard:
 
-[Weather Dashboard](https://chelsea314.github.io/Challenge-6---Server-Side-APIs-Weather-Dashboard/)
+## Resources
+[Open Weather API](https://openweathermap.org/api/one-call-api) | [Bootstrap](https://www.npmjs.com/package/bootstrap) | [jQuery](https://jquery.com/)
 
+## Contributing
+<table>
+
+<td align="center"><a href="https://github.com/chelsea314"><img src="https://avatars.githubusercontent.com/u/1285062?v=4" width="100px;" alt=""/><br /><sub><b>Chelsea Sexton</b></sub></a></td>
+
+
+<td align="center"><a href="https://github.com/Jadentr44"><img src="https://avatars.githubusercontent.com/u/107438209?v=4" width="100px;" alt=""/><br /><sub><b>Jaden Rodriguez</b></sub></a></td>
+</tr>
+</table>
+
+## Questions
+Feel free to contact Chelsea with suggestions for improvements, questions or concerns.
 <br>
 
-#  Website Screenshot
-
-![Weather Dashboard](./assets/images/WeatherDashboard.png)
-
-<br>
-
-# Collaborators
-[Chelsea Sexton](https://github.com/chelsea314)
-<br>
-
-Special thanks to...
-<br>
-* [Jaden Rodriguez](https://github.com/Jadentr44)
-
-<br>
-
-# Resources
-* Open Weather One Call API:
-    * https://openweathermap.org/api/one-call-api
-* Bootstrap
-* jQuery    
-
-<br>
-
-# License
-MIT License
-
-Copyright (c) 2022 Chelsea Sexton
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+[Email: Chelsea Sexton](mailto:chelseansexton@gmail.com)
