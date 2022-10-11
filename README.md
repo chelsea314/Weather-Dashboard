@@ -1,12 +1,12 @@
-# Challenge-6---Server-Side-APIs-Weather-Dashboard
+# Weather-Dashboard
 
 # Overview
-The purpose of this project is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. Travelers can see the weather outlook for multiple cities so that they can plan trips accordingly. 
+The purpose of this applicaiton is to give travelers the weather forecast for cities of their choosing so that they can plan trips accordingly. Their searches are saved and accessible to review again.
 
 <br>
 
 # Deployed Website
-Follow link to view my Module 6 - Challenge - Weather Dashboard:
+Follow link to view the Weather Dashboard:
 
 [Weather Dashboard](https://chelsea314.github.io/Challenge-6---Server-Side-APIs-Weather-Dashboard/)
 
