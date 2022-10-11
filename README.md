@@ -8,7 +8,7 @@ The purpose of this applicaiton is to give travelers the weather forecast for ci
 # Deployed Website
 Follow link to view the Weather Dashboard:
 
-[Weather Dashboard](https://chelsea314.github.io/Challenge-6---Server-Side-APIs-Weather-Dashboard/)
+[Weather Dashboard](https://chelsea314.github.io/Weather-Dashboard/)
 
 <br>
 
