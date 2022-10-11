@@ -10,7 +10,7 @@ The purpose of this applicaiton is to give travelers the weather forecast for ci
  - [How it Works](#how-it-works)
  - [Resources](#resources)
  - [Contributing](#contributing)
- - [Quesitons](#questions)
+ - [Questions](#questions)
 
 ##  How it Works:
 When the user first arrives to the Weather Dashboard, they will be presented with a form to search for a city. 
