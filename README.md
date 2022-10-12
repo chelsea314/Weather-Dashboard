@@ -2,7 +2,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Deployed Link
-Click [here.](https://chelsea314.github.io/Challenge-6---Server-Side-APIs-Weather-Dashboard/)
+Click [here.](https://chelsea314.github.io/Weather-Dashboard/)
 ## Description
 The purpose of this applicaiton is to give travelers the weather forecast for cities of their choosing so that they can plan trips accordingly. Their searches are saved and accessible to review again.
 
